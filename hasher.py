@@ -83,8 +83,11 @@ def run_hash():
         })
 
         artifact.unlink()
-
-    with Path('checksums.json').open(mode='wt') as jfile:
+    
+    checksum_dir = Path('checksums')
+    checksum_dir.mkdir(parents=True, exists_ok=True)
+    
+    with Path(f'{checksum_dir}/kicad.json').open(mode='wt') as jfile:
         file_hashes['updated'] = datetime.datetime.now().isoformat()
         json.dump(file_hashes, jfile)
     
