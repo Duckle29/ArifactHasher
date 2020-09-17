@@ -88,8 +88,8 @@ def run_hash():
     checksum_dir.mkdir(parents=True, exist_ok=True)
     
     with Path(f'{checksum_dir}/kicad.json').open(mode='wt') as jfile:
-        file_hashes['updated'] = datetime.datetime.now().isoformat()
-        json.dump(file_hashes, jfile)
+        data = { "updated":  datetime.datetime.now().isoformat(), "variants" : file_hashes }
+        json.dump(data, jfile)
     
 
 
