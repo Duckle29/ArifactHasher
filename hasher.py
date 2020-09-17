@@ -95,9 +95,10 @@ def run_hash():
 
 def download_file(url):
     file_path = Path(f'downloads/{url.split("/")[-1]}')
+    file_path.parent.mkdir(parents=True, exists_ok=True)
 
     chunk_size=2**16
-
+ 
     with requests.get(url, stream=True) as r:
         r.raise_for_status()
         size = int(r.headers.get('content-length', 0))
