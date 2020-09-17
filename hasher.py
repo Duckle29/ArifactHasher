@@ -85,7 +85,7 @@ def run_hash():
         artifact.unlink()
     
     checksum_dir = Path('checksums')
-    checksum_dir.mkdir(parents=True, exists_ok=True)
+    checksum_dir.mkdir(parents=True, exist_ok=True)
     
     with Path(f'{checksum_dir}/kicad.json').open(mode='wt') as jfile:
         file_hashes['updated'] = datetime.datetime.now().isoformat()
@@ -95,7 +95,7 @@ def run_hash():
 
 def download_file(url):
     file_path = Path(f'downloads/{url.split("/")[-1]}')
-    file_path.parent.mkdir(parents=True, exists_ok=True)
+    file_path.parent.mkdir(parents=True, exist_ok=True)
 
     chunk_size=2**16
  
