@@ -2,6 +2,7 @@ import re
 from pathlib import Path
 import hashlib
 import json
+import datetime
 
 import requests
 from tqdm import tqdm
@@ -84,6 +85,7 @@ def run_hash():
         artifact.unlink()
 
     with Path('checksums.json').open(mode='wt') as jfile:
+        file_hashes['updated'] = datetime.datetime.now().isoformat()
         json.dump(file_hashes, jfile)
     
 
